@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration status="WARN">
+    <Properties>
+        <Property name="log-path">logs</Property>
+    </Properties>
+    <Appenders>
+        <File name="generations-file-log" fileName="src/main/resources/generations-trace.log">
+            <PatternLayout>
+                <pattern>%d{HH:mm:ss}: %msg%n</pattern>
+            </PatternLayout>
+        </File>
+        <Console name="console" target="SYSTEM_OUT">
+            <PatternLayout pattern="[%-5level] %d{HH:mm:ss.SSS} %c{1} - %msg%n"/>
+        </Console>
+        <File name="file" fileName="src/main/resources/detail.log">
+            <PatternLayout>
+                <pattern>[%-5level] %d{HH:mm:ss.SSS} %c{1} - %msg%n</pattern>
+            </PatternLayout>
+        </File>
+        <File name="history" fileName="src/main/resources/history.log">
+            <PatternLayout>
+                <pattern>[%-5level] %d{DD:MM HH:mm}- %msg%n</pattern>
+            </PatternLayout>
+        </File>
+    </Appenders>
+    <Loggers>
+        <Logger name="test.wayruha.fitness" level="trace" additivity="false">
+            <appender-ref ref="file" level="info"/>
+            <appender-ref ref="console" level="trace"/>
+        </Logger>
+        <Logger name="com.wayruha.Generation" level="trace" additivity="false">
+            <appender-ref ref="file" level="trace"/>
+            <appender-ref ref="console" level="trace"/>
+        </Logger>
+        <Logger name="com.wayruha.Runner" level="trace" additivity="false">
+            <appender-ref ref="generations-file-log" level="trace"/>
+            <appender-ref ref="history" level="info"/>
+        </Logger>
+        <Root level="info" additivity="false">
+            <AppenderRef ref="console"/>
+        </Root>
+    </Loggers>
+</Configuration>
