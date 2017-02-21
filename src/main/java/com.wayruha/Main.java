@@ -12,19 +12,18 @@ public class Main {
     public static final int GENOME_LENGTH = 32;
     public static final Random rnd = new Random();
     private static final IFitnessCalculator FITNESS_CALCULATOR_INSTANCE = new RobotCleanerGame();
-    private static final int INDIVIDUALS_COUNT = 60, POPULATION_COUNT = 500;
-    private static final double MUTATION_CHANCE = 0.1;
-    private static final CrossoverType CROSSOVER_TYPE = CrossoverType.TWO_POINT;
-    private static final MutationType MUTATION_TYPE = MutationType.EXCHANGE;
+    private static final int INDIVIDUALS_COUNT = 40, POPULATION_COUNT = 4000;
+    private static final double MUTATION_CHANCE = 0.5;
+    private static final CrossoverType CROSSOVER_TYPE = CrossoverType.SINGLE_POINT;
+    private static final MutationType MUTATION_TYPE = MutationType.RANDOM_INSERTION;
 
 
     public static void main(String[] args) {
         Config config = new Config(POPULATION_COUNT, INDIVIDUALS_COUNT, MUTATION_CHANCE, CROSSOVER_TYPE, MUTATION_TYPE);
         new Runner(config).run();
-        //  compareCrossoverTechniques();
-        //  compareMutationTechniques();
-        //   compareMutationChances();
-
+        /*compareCrossoverTechniques();
+        compareMutationTechniques();
+        compareMutationChances();*/
     }
 
     /*
@@ -51,7 +50,7 @@ public class Main {
     * Comparing mutation chances
     * */
     private static void compareMutationChances() {
-        for (double chance = 0; chance < 1; chance += 0.02) {
+        for (double chance = 0; chance < 1; chance += 0.1) {
             Config config = new Config(POPULATION_COUNT, INDIVIDUALS_COUNT, chance, CROSSOVER_TYPE, MUTATION_TYPE);
             new Runner(config).run();
         }

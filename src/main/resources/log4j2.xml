@@ -10,7 +10,7 @@
             </PatternLayout>
         </File>
         <Console name="console" target="SYSTEM_OUT">
-            <PatternLayout pattern="[%-5level] %d{HH:mm:ss.SSS} %c{1} - %msg%n"/>
+            <PatternLayout pattern="[%-5level] %d{HH:mm:ss} %c{1} - %msg%n"/>
         </Console>
         <File name="file" fileName="src/main/resources/detail.log">
             <PatternLayout>

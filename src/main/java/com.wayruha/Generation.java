@@ -11,12 +11,12 @@ public class Generation {
     private static final Logger log = (Logger) LogManager.getLogger(Generation.class);
     public int id;
     List<Individual> population;
-    public static ArrayList<Generation> generationList = new ArrayList<>();
+    public static ArrayList<Generation> generationsList = new ArrayList<>();
 
 
     public Generation(Individual parentA, Individual parentB) {
-        generationList.add(this);
-        this.id = generationList.size();
+        generationsList.add(this);
+        this.id = generationsList.size();
         population = new ArrayList<>();
         if (parentA != null && parentB != null)
             log.info("Generation #" + id + " was created (best points=" + parentA.getFitness() + "," + parentB.getFitness() + ").");

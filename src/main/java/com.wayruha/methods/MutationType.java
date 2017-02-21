@@ -1,9 +1,18 @@
 package com.wayruha.methods;
 
 import com.wayruha.Main;
+import com.wayruha.fitness.Action;
 
 
 public enum MutationType {
+
+    RANDOM_INSERTION(genome -> {
+        int posToInsert = Main.rnd.nextInt(Main.GENOME_LENGTH);
+        StringBuilder strBld = new StringBuilder(genome);
+        char randomChar=(char)(Main.rnd.nextInt(Action.values().length)+48);
+        strBld.setCharAt(posToInsert,randomChar);
+        return strBld.toString();
+    }),
     /*
     * We simply choose two genes at random  and swap them:
     * */
@@ -68,7 +77,7 @@ public enum MutationType {
         StringBuilder strBld = new StringBuilder(genome);
         String substr = strBld.substring(pos1, pos2);
         strBld.delete(pos1, pos2);
-        int insertPos = Main.rnd.nextInt(Main.GENOME_LENGTH - (pos2 - pos1));
+        int insertPos = Main.rnd.nextInt(Main.GENOME_LENGTH - (pos2 - pos1)+1);
         strBld.insert(insertPos, substr);
         return strBld.toString();
     }),
@@ -125,7 +134,7 @@ public enum MutationType {
         StringBuilder strBld = new StringBuilder(genome);
         StringBuilder subStrBld = new StringBuilder(strBld.substring(pos1, pos2));
         strBld.delete(pos1, pos2);
-        int posToInsert = Main.rnd.nextInt(Main.GENOME_LENGTH - (pos2 - pos1));
+        int posToInsert = Main.rnd.nextInt(Main.GENOME_LENGTH - (pos2 - pos1)+1);
         strBld.insert(posToInsert, subStrBld.reverse().toString());
         return strBld.toString();
     });

@@ -41,7 +41,7 @@ public class Runner {
         //evolve first generation by hand randomly
         Generation generation = evolveNewRandomGeneration();
         //loop for number of generations
-        while (Generation.generationList.size() < config.getPopulationsCount()) {
+        while (Generation.generationsList.size() < config.getPopulationsCount()) {
             bestInPopulation = MainMethods.selectBest(generation);
             parentA = bestInPopulation.get(0);
             parentB = bestInPopulation.get(1);
@@ -52,6 +52,7 @@ public class Runner {
         parentA = bestInPopulation.get(0);
         parentB = bestInPopulation.get(1);
         log.info(config.toString() + "Best solutions:" + parentA + " and " + parentB);
+        Generation.generationsList.clear();
         return parentA.getFitness();
     }
 
